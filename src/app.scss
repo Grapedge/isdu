@@ -1,0 +1,66 @@
+$color-brand: #00b696;
+$color-brand-light: #40c8b0;
+$color-brand-dark: #009278;
+@import '~taro-ui/dist/style/index.scss';
+
+.app-cntr {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+view,
+scroll-view,
+swiper,
+swiper-item,
+movable-area,
+movable-view,
+cover-view,
+cover-image,
+icon,
+text,
+rich-text,
+progress,
+button,
+checkbox-group,
+checkbox,
+form,
+input,
+label,
+picker,
+picker-view,
+radio-group,
+radio,
+slider,
+switch,
+textarea,
+navigator,
+functional-page-navigator,
+image,
+video,
+camera,
+live-player,
+live-pusher,
+map,
+canvas,
+open-data,
+web-view,
+ad {
+  box-sizing: border-box;
+}
+
+$unit: 16px;
+.mb-1 {
+  margin-bottom: $unit;
+}
+.mb-2 {
+  margin-bottom: $unit * 2;
+}
+.mb-3 {
+  margin-bottom: $unit * 3;
+}
+.mb-4 {
+  margin-bottom: $unit * 4;
+}

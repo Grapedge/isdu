@@ -1,0 +1,36 @@
+.card {
+  margin: 24px 32px;
+  border-radius: 16px;
+  box-shadow: 0 0 16px rgb(201, 201, 201);
+  padding: 16px 32px;
+  position: relative;
+  height: 240px;
+}
+
+.name, .info, .cas-id {
+  margin-left: 32px;
+  font-size: 0.8em;
+}
+
+.depart {
+  font-size: .8em;
+}
+.cas-id {
+  font-size: 0.8em;
+}
+
+.major-cntr {
+  margin-left: 120px;
+}
+
+.name {
+  font-size: 1em;
+}
+
+.login-btn {
+  width: 240px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
