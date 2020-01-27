@@ -19,9 +19,9 @@ import {
   COURSE_ERROR,
   COURSE_SUCCESS
 } from '@/constants/course';
+import { getCurWeek } from '@/api/util/time';
 
 import './home.scss';
-import { getCurWeek } from '@/api/util/time';
 
 const firstWeekDate = new Date(2020, 1, 17);
 // 主页

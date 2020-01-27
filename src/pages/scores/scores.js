@@ -1,5 +1,5 @@
 import Taro, { useState } from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import { AtTabs, AtTabsPane, AtCard, AtList, AtListItem } from 'taro-ui';
 
 export default function Scores() {

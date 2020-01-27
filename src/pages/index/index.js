@@ -42,8 +42,8 @@ export default function Index() {
         ]}
         current={current}
         onClick={v => setCurrent(v)}
+        className='tab-bar'
       />
-      <View className='mb-1' />
     </View>
   );
 }

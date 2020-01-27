@@ -1,5 +1,5 @@
 import Taro, { useCallback } from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import { useSelector } from '@tarojs/redux';
 import { NEWS_DETAIL_REQUEST } from '@/constants/news_detail';
 import { AtActivityIndicator } from 'taro-ui';

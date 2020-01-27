@@ -7,7 +7,7 @@ export const newsRequest = makeActionCreator(NEWS_REQUEST);
 export const newsSuccess = makeActionCreator(NEWS_SUCCESS, 'payload');
 export const newsError = makeActionCreator(NEWS_ERROR, 'payload');
 
-const newsData = (site, page = 1) => (dispatch, _getState) => {
+const newsData = (site, page = 1) => dispatch => {
   // if (getState().news.status === NEWS_SUCCESS) return;
   dispatch(newsRequest());
   return request({

@@ -1,17 +1,11 @@
-import Taro, {
-  useCallback,
-  useEffect,
-  useState,
-  useDidShow
-} from '@tarojs/taro';
-import { View, Text, Swiper, SwiperItem, Image } from '@tarojs/components';
+import Taro, { useEffect, useState } from '@tarojs/taro';
 import { AtTabs, AtTabsPane, AtListItem, AtList } from 'taro-ui';
 import { useDispatch, useSelector } from '@tarojs/redux';
 import newsData from '@/actions/news';
 import { NEWS_SUCCESS } from '@/constants/news';
+import newsDetail from '@/actions/news_detail';
 
 import './news.scss';
-import newsDetail from '@/actions/news_detail';
 
 const sites = ['sduOnline', 'underGraduate', 'sduYouth', 'sduView'];
 export default function Home() {
