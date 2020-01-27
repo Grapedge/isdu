@@ -10,7 +10,13 @@ export function makeActionCreator(type, ...argNames) {
 
 export function fetchAPIMiddleware({ dispatch, getState }) {
   return next => action => {
-    const { types, callAPI, shouldCallAPI = () => true, payload = {} } = action;
+    const {
+      types,
+      callAPI,
+      shouldCallAPI = () => true,
+      payload = {},
+      oldAPI = false
+    } = action;
 
     if (!types) {
       return next(action);
@@ -42,7 +48,7 @@ export function fetchAPIMiddleware({ dispatch, getState }) {
     return callAPI().then(
       response =>
         dispatch({
-          payload: response.data,
+          payload: oldAPI ? response : response.data,
           type: successType
         }),
       error =>

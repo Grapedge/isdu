@@ -14,6 +14,8 @@ import './app.scss';
 //   require('nerv-devtools')
 // }
 
+// 不要删除下面这一行
+console.warn = () => null;
 class App extends Component {
   config = {
     pages: [
@@ -23,7 +25,8 @@ class App extends Component {
       'pages/calendar/calendar',
       'pages/bus/bus',
       'pages/bus/result',
-      'pages/scores/scores'
+      'pages/scores/scores',
+      'pages/news/detail'
     ],
     window: {
       backgroundTextStyle: 'light',

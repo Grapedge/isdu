@@ -1,5 +1,5 @@
 import { USER_URL } from '@/constants/fetch_url';
-import { request, authRequest } from '@/api/network/request';
+import { authRequest } from '@/api/network/request';
 import { USER_REQUEST, USER_SUCCESS, USER_ERROR } from '@/constants/user';
 
 const userInfo = () => {

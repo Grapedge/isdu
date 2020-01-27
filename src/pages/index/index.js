@@ -6,6 +6,7 @@ import { login } from '@/actions/authentication';
 import { getPassword, getStuID } from '@/api/data/user';
 import userInfo from '@/actions/user';
 import User from './user/user';
+import News from './news/news';
 import Home from './home/home';
 
 import './index.scss';
@@ -18,7 +19,6 @@ export default function Index() {
     const password = getPassword();
     if (stuID && password) {
       dispatch(login(stuID, password)).then(() => {
-        console.log('dispatch')
         dispatch(userInfo());
       });
     }
@@ -26,7 +26,9 @@ export default function Index() {
   return (
     <View className='app-cntr'>
       <View className='cntr'>
-        {current === 0 ? null : current === 1 ? (
+        {current === 0 ? (
+          <News />
+        ) : current === 1 ? (
           <Home />
         ) : current === 2 ? (
           <User />

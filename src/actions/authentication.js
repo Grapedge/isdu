@@ -6,24 +6,11 @@ import {
 import { request } from '@/api/network/request';
 import { LOGIN_URL } from '@/constants/fetch_url';
 import { setStuID, setPassword } from '@/api/data/user';
+import { makeActionCreator } from './makeActionCreator';
 
-export const loginRequest = () => ({
-  type: LOGIN_REQUEST
-});
-
-export const loginSuccess = ({ stuID, token, password }) => {
-  setStuID(stuID);
-  setPassword(password);
-  return {
-    type: LOGIN_SUCCESS,
-    payload: { stuID, token }
-  };
-};
-
-export const loginError = error => ({
-  type: LOGIN_ERROR,
-  payload: error
-});
+export const loginRequest = makeActionCreator(LOGIN_REQUEST);
+export const loginSuccess = makeActionCreator(LOGIN_SUCCESS, 'payload');
+export const loginError = makeActionCreator(LOGIN_ERROR, 'payload');
 
 export const login = (stuID, password) => dispatch => {
   dispatch(loginRequest());
@@ -35,6 +22,8 @@ export const login = (stuID, password) => dispatch => {
     res => {
       if (res.code === 0) {
         // 登录成功
+        setStuID(stuID);
+        setPassword(password);
         dispatch(loginSuccess({ stuID, token: res.data[0], password }));
       } else {
         // 登录失败

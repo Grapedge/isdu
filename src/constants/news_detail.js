@@ -1,0 +1,3 @@
+export const NEWS_DETAIL_REQUEST = 'NEWS_D_REQUEST';
+export const NEWS_DETAIL_SUCCESS = 'NEWS_D_SUCCESS';
+export const NEWS_DETAIL_ERROR = 'NEWS_D_ERROR';
