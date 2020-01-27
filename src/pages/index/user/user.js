@@ -1,10 +1,9 @@
-import Taro, { useEffect } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import { AtAvatar, AtList, AtListItem, AtDivider, AtButton } from 'taro-ui';
-import { useSelector, useDispatch } from '@tarojs/redux';
-import { userInfo } from '@/actions/user';
-import './user.scss';
 import { USER_SUCCESS } from '@/constants/user';
+import { useSelector } from '@tarojs/redux';
+import './user.scss';
 
 export default function User() {
   const user = useSelector(state => state.user);

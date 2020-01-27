@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import { fetchAPIMiddleware } from '@/actions/makeActionCreator';
 import rootReducer from '../reducers';
 
 const composeEnhancers =
@@ -7,20 +8,20 @@ const composeEnhancers =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose;
 
-const middlewares = [thunkMiddleware];
+const middlewares = [thunkMiddleware, fetchAPIMiddleware];
 
 if (
   process.env.NODE_ENV === 'development' &&
   process.env.TARO_ENV !== 'quickapp'
 ) {
-//  middlewares.push(require('redux-logger').createLogger());
+   middlewares.push(require('redux-logger').createLogger());
 }
 
-const enhancer = composeEnhancers(
-  applyMiddleware(...middlewares)
-);
+const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 
-export default function configStore() {
+export function configStore() {
   const store = createStore(rootReducer, enhancer);
   return store;
 }
+
+export default configStore();

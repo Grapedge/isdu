@@ -4,7 +4,7 @@ import { AtTabBar } from 'taro-ui';
 import { useDispatch } from '@tarojs/redux';
 import { login } from '@/actions/authentication';
 import { getPassword, getStuID } from '@/api/data/user';
-import { userInfo } from '@/actions/user';
+import userInfo from '@/actions/user';
 import User from './user/user';
 import Home from './home/home';
 
@@ -18,6 +18,7 @@ export default function Index() {
     const password = getPassword();
     if (stuID && password) {
       dispatch(login(stuID, password)).then(() => {
+        console.log('dispatch')
         dispatch(userInfo());
       });
     }

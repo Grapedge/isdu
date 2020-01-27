@@ -9,6 +9,7 @@ import { BUS_ERROR, BUS_REQUEST, BUS_SUCCESS } from '@/constants/bus';
 // 校车查询结果页面
 export default function BusResult() {
   const way = useSelector(state => state.bus);
+  console.log(way);
   return (
     <View>
       <View className='mb-2' />

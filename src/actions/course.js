@@ -6,28 +6,18 @@ import {
 import { getCourseSchedule, setCourseSchedule } from '@/api/data/course';
 import { authRequest } from '@/api/network/request';
 import { COURSE_URL } from '@/constants/fetch_url';
+import { makeActionCreator } from './makeActionCreator';
 
 // 课表action
 
-export const courseRequest = () => ({
-  type: COURSE_REQUEST
-});
+export const courseRequest = makeActionCreator(COURSE_REQUEST);
 
-export const courseSuccess = schedule => {
-  // 存储课表
-  setCourseSchedule(schedule);
-  return {
-    type: COURSE_SUCCESS,
-    payload: schedule
-  };
-};
+export const courseSuccess = makeActionCreator(COURSE_SUCCESS, 'payload');
 
-export const courseError = errror => ({
-  type: COURSE_ERROR,
-  payload: errror
-});
+export const courseError = makeActionCreator(COURSE_ERROR, 'payload');
 
 export const courseSchedule = () => async (dispatch, getState) => {
+  if (getState().course.status === COURSE_SUCCESS) return;
   dispatch(courseRequest());
   let schedule = getCourseSchedule();
   if (schedule) {
@@ -44,6 +34,7 @@ export const courseSchedule = () => async (dispatch, getState) => {
         ...v,
         courseWeeks: JSON.parse(v.courseWeeks)
       }));
+      setCourseSchedule(schedule);
       dispatch(courseSuccess(schedule));
       return schedule;
     } catch (e) {

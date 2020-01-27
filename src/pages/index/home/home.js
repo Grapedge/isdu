@@ -37,6 +37,7 @@ export default function Home() {
         Taro.navigateTo({
           url: '/pages/bus/bus'
         });
+        break;
       case 3:
         Taro.navigateTo({
           url: '/pages/calendar/calendar'

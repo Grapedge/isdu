@@ -1,9 +1,9 @@
 import Taro, { useState, useCallback, useRef } from '@tarojs/taro';
-import { View, Image, Text, Button } from '@tarojs/components';
+import { View, Image, Text } from '@tarojs/components';
 import { AtSwitch, AtButton } from 'taro-ui';
-import './bus.scss';
 import { useDispatch } from '@tarojs/redux';
-import { busInfo } from '@/actions/bus';
+import busInfo from '@/actions/bus';
+import './bus.scss';
 
 const schoolNameMap = [
   '中心',

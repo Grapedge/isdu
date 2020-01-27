@@ -2,6 +2,7 @@ import Taro from '@tarojs/taro';
 import { AUTH_FAIL_CODE, LOGIN_SUCCESS } from '@/constants/authentication';
 import { login } from '@/actions/authentication';
 import { getStuID, getPassword } from '../data/user';
+import store from '../../store/index';
 
 /**
  * 发送网络请求简写方法，使用同Taro.request
@@ -22,10 +23,8 @@ export const request = params => {
  * @param {*} params request params
  * @param {*} redux {dispatch, getState}
  */
-export const authRequest = async (params, { dispatch, getState }) => {
-  if (!getState) {
-    throw '身份认证请求必须包含 getState';
-  }
+export const authRequest = async (params, count = 0) => {
+  const { dispatch, getState } = store;
   const { token } = getState().auth.data;
   const res = await request({
     ...params,
@@ -36,7 +35,7 @@ export const authRequest = async (params, { dispatch, getState }) => {
   });
 
   if (res.code === AUTH_FAIL_CODE) {
-    if (!dispatch) {
+    if (count >= 1) {
       Taro.redirectTo({ url: '/pages/login/login' });
       throw '401: 身份认证失败';
     }
@@ -44,7 +43,7 @@ export const authRequest = async (params, { dispatch, getState }) => {
     await dispatch(login(getStuID(), getPassword()));
     if (getState().auth.status === LOGIN_SUCCESS) {
       // 登录成功
-      return authRequest(params, { getState });
+      return authRequest(params, count + 1);
     }
   }
   return res;
